@@ -5,11 +5,11 @@ use std::process;
 fn main() {
     let args: Vec<String> = env::args().collect();
     let config = Config::build(&args).unwrap_or_else(|err| {
-        println!("problem parsing arguments {err}");
+        eprintln!("problem parsing arguments {err}");
         process::exit(1);
     });
     if let Err(e) = minigrep::run(config) {
-        println!("problem to execute command {e}");
+        eprintln!("problem to execute command {e}");
         process::exit(1);
     }
 }
